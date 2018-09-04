@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-allauth = "*"
+requests = "*"
+gunicorn = "*"
+dj-database-url = "*"
+whitenoise = "*"
+unipath = "*"
+"psycopg2" = "*"
+pip = "*"
+black = "*"
+patronage = {git = "https://github.com/phildini/django-patronage.git", editable = true}
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

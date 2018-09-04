@@ -1,0 +1,2 @@
+python manage.py migrate --settings=patrontube.prod_settings
+python manage.py collectstatic --no-input --settings=patrontube.prod_settings
