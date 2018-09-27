@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-allauth = "*"
+django-allauth = {git = "https://github.com/phildini/django-allauth.git"}
 requests = "*"
 gunicorn = "*"
 dj-database-url = "*"
@@ -13,8 +13,9 @@ whitenoise = "*"
 unipath = "*"
 "psycopg2" = "*"
 pip = "*"
-black = "*"
 patronage = {git = "https://github.com/phildini/django-patronage.git", editable = true}
+channels = "*"
+channels-redis = "*"
 
 [dev-packages]
 

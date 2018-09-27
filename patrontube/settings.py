@@ -59,10 +59,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "channels",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.vimeo",
+    "allauth.socialaccount.providers.vimeo_oauth2",
     "allauth.socialaccount.providers.patreon",
     "patronage.apps.PatronageConfig",
     "videos",
@@ -97,7 +98,14 @@ SOCIALACCOUNT_PROVIDERS = {
             "campaigns.members",
             "w:campaigns.webhook",
         ]
-    }
+    },
+    "vimeo_oauth2": {
+        "SCOPE": [
+            'public',
+            'private',
+            'edit',
+        ]
+    },
 }
 
 ACCOUNT_EMAIL_REQUIRED = False
@@ -113,7 +121,7 @@ ROOT_URLCONF = "patrontube.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [PROJECT_ROOT.child('templates'),],
+        "DIRS": [PROJECT_ROOT.child("templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -127,6 +135,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "patrontube.wsgi.application"
+ASGI_APPLICATION = "patrontube.routing.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {"hosts": [("127.0.0.1", 6379)]},
+    }
+}
 
 
 # Database
