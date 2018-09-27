@@ -58,26 +58,3 @@ class VimeoPatronageView(PatronageView):
                     )
                     remote_benefits.append(benefit)
         return remote_benefits
-
-    def create_remote_benefit(self):
-        code = get_random_string(length=8)
-        vimeouser = SocialToken.objects.get(
-            account__user=self.request.user, app__provider="vimeo"
-        )
-        # r = requests.get(
-        #     "https://www.eventbriteapi.com/v3/users/me/organizations/",
-        #     headers={"Authorization": "Bearer {}".format(ebuser.token)},
-        # )
-        # organization_id = r.json().get("organizations", [{}])[0].get("id")
-        # r = requests.post(
-        #     "https://www.eventbriteapi.com/v3/organizations/{}/discounts/".format(
-        #         organization_id
-        #     ),
-        #     data={
-        #         "discount.code": code,
-        #         "discount.type": "coded",
-        #         "discount.percent_off": "100",
-        #     },
-        #     headers={"Authorization": "Bearer {}".format(ebuser.token)},
-        # )
-        # return r.json()["id"], code
